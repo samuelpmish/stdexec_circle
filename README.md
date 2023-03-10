@@ -52,3 +52,14 @@ CMake is inserting a lot of "-MD -MT" for each translation unit, and it looks li
 $ ./circle -MD -MT sanity.cxx 
 error: macro name -MT must be an identifier
 ```
+
+Also, the flags
+
+```
+-ferror-limit=0
+-fmacro-backtrace-limit=0
+-ftemplate-backtrace-limit=0
+-fcolor-diagnostics
+```
+
+were also causing problems with `circle`, but these were added by this project, so I just removed them. The "-MD -MT" flags seem to be added by CMake directly, so I don't know if it's possible to remove them.
